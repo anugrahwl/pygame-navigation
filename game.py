@@ -1,13 +1,14 @@
-import time, os, sys
-import pygame
-from library import extract_input
+import pygame, time, os, sys
+
 from pygame.locals import *
 from state_stack import StateStack
 
 class Game :
     def __init__(self) :
+        SCREEN_SIZE = (600, 600)
+
         pygame.init()
-        self.screen = pygame.display.set_mode((600, 600))
+        self.screen = pygame.display.set_mode(SCREEN_SIZE)
         self.clock = pygame.time.Clock()
 
         self.running = True
@@ -21,7 +22,7 @@ class Game :
                 sys.exit()
         return events
 
-    def extract_input(events) :
+    def extract_input(self, events) :
         inputs = {}
         for event in events :
             if event.type == KEYDOWN :
@@ -39,7 +40,7 @@ class Game :
     def loop(self) :
         while game.running:
             events = self.get_events()
-            inputs = extract_input(events)
+            inputs = self.extract_input(events)
 
             self.state_stack.update(inputs)
             self.state_stack.render()

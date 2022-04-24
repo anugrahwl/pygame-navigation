@@ -1,15 +1,17 @@
 import pygame
+
+from pygame.locals import *
+
 from state import State
 from play_state import PlayState
-from pygame.locals import *
 
 class MainMenuState(State) :
     def __init__(self, states) :
+        FONT_PATH = 'D:/Coding/Source Code/pygame-navigation/assets/font/04B_19.ttf'
+
         super().__init__(states)
 
-        font_path = 'D:/Coding/Source Code/Pukimon/assets/font/04B_19.ttf'
-        font = pygame.font.Font(font_path, 50)
-
+        font = pygame.font.Font(FONT_PATH, 50)
         self.text_surf = font.render("Main Menu", True, "Red")
         self.text_rect = self.text_surf.get_rect(center=(300,100))
 

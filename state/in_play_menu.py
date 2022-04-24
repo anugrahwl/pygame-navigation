@@ -1,9 +1,12 @@
 import pygame, sys
+
 from pygame.locals import *
 from state import State
 
 class InPlayMenuState(State) :
     def __init__(self, states) :
+
+
         super().__init__(states)
 
         self.pointer_surf = pygame.Surface((10, 10))
@@ -18,12 +21,12 @@ class InPlayMenuState(State) :
         self.menu_rect = self.menu_surf.get_rect(center=(300, 250))
 
     def construct_menu(self) :
-        margin = 20
-        text_size = 30
+        TEXT_SIZE = 30
+        MARGIN_SIZE = 20
+        FONT_PATH = 'D:/Coding/Source Code/pygame-navigation/assets/font/04B_19.ttf'
 
         # generate text surfaces
-        font_path = 'D:/Coding/Source Code/Pukimon/assets/font/04B_19.ttf'
-        font = pygame.font.Font(font_path, text_size)
+        font = pygame.font.Font(FONT_PATH, TEXT_SIZE)
 
         text_surfaces = []
         for i, option in enumerate(self.options) :
@@ -32,7 +35,7 @@ class InPlayMenuState(State) :
 
         # calculate menu surface size
         main_width, main_height = 0, 0
-        main_height = len(text_surfaces) * (text_size + margin) - margin
+        main_height = len(text_surfaces) * (TEXT_SIZE + MARGIN_SIZE) - MARGIN_SIZE
 
         for text_surf in text_surfaces :
             w, h = text_surf.get_size()
@@ -45,7 +48,7 @@ class InPlayMenuState(State) :
         menu_surf.fill('Black')
         for i, text_surf in enumerate(text_surfaces) :
             pos_x = main_width // 2
-            pos_y = i * (margin + text_size)
+            pos_y = i * (MARGIN_SIZE + TEXT_SIZE)
             text_rect = text_surf.get_rect(midtop=(pos_x, pos_y))
 
             pos_x = text_rect.left - 15

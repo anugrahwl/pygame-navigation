@@ -1,5 +1,5 @@
 import sys
-sys.path.append('D:/Coding/Source Code/Pukimon/state/')
+sys.path.append('D:/Coding/Source Code/pygame-navigation/state/')
 
 from main_menu_state import MainMenuState
 
